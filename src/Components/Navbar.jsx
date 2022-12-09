@@ -15,12 +15,12 @@ const Navbar = () => {
       {state.theme === themes.light ? <button onClick={() => {
                 dispatch({type: 'THEME_DARK', payload: true})
                 }
-            } style={{backgroundColor: 'black'}} className='switch'>🌚</button> 
+            } style={{backgroundColor: "#222222"}} className='switch'>🌚</button> 
             :
             <button onClick={() => {
               dispatch({type: 'THEME_LIGHT', payload: false})
               }
-          } style={{backgroundColor: 'white'}} className='switch'>🌞</button>}
+          } style={{backgroundColor: "#F7F5F2"}} className='switch'>🌞</button>}
       
       </div>
     </nav>

@@ -14,13 +14,18 @@ code {
     monospace;
 }
 .favButton{
-  background-color: rgba(136, 136, 136, 0.116);
   padding: 10px;
   border: none;
-  width: 100%;
   cursor: pointer;
   margin: .5rem;
 }
+.deleteButton{
+  padding: 11px;
+  border: none;
+  cursor: pointer;
+  margin: .5rem;
+}
+
 
 h1{
   text-align: center;
@@ -28,6 +33,7 @@ h1{
 .switch{
   margin: auto;
   padding: .5rem;
+  border-radius: 30%; 
 }
 nav{
   display: flex;
@@ -124,6 +130,9 @@ form p{
   padding: 0.5rem 0.5rem 0 0.5rem;
   border: 0.5px solid rgb(136, 136, 136);
 }
+.homeCard .deleteButton{
+  display: none;
+}
 .cardBox{
   display: flex;
   justify-content: space-around;
@@ -171,4 +180,7 @@ td, th {
 
 tr:nth-child(even) {
   background-color: #dddddd;
+}
+.favCard .favButton{
+  display: none;
 }

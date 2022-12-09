@@ -4,19 +4,19 @@ import { useEffect } from "react";
 import Card from "../Components/Card";
 
 const Favs = () => {
-  const [dentistasFav, setDentistasFav] = useState([]);
+  const [favoritos, setFavoritos] = useState([]);
 
   useEffect(() => {
     const fav = JSON.parse(localStorage.getItem('favs'));
     if (fav) {
-      setDentistasFav(fav);
+      setFavoritos(fav);
     }
   }, []);
   return (
     <>
       <h1>Dentists Favs</h1>
-      <div className="card-grid">
-        {dentistasFav?.map(dentista => <Card name={dentista.name} username={dentista.username} id={dentista.id} key={dentista.id}/>)}
+      <div className="card-grid favCard">
+        {favoritos.map(dentista => <Card dentista={dentista} key={dentista.id}/>)}
       </div>
     </>
   );

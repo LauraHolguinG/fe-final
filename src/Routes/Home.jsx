@@ -8,7 +8,7 @@ const Home = () => {
     <main>
       <h1>Home</h1>
       <div className='card-grid'>
-        {datos.map(dentista => <Card dentista={dentista} name={dentista.name} username={dentista.username} id={dentista.id} key={dentista.id} />)}
+        {datos.map(dentista => <Card dentista={dentista} key={dentista.id} />)}
       </div>
     </main>
   )

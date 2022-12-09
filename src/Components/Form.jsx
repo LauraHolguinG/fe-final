@@ -51,10 +51,10 @@ const Form = () => {
   return (
     <div>
       <form onSubmit={handleSubmit} style={formStyle}>
-        <label for="name-input" >Name</label>
+        <label htmlFor="name-input" >Name</label>
         <input type="text" name='name' id="name-input" onChange={handleChange} />
         <p>{formErrors.name}</p>
-        <label for="email-input">Email</label>
+        <label htmlFor="email-input">Email</label>
         <input type="text" name='email' id="email-input" onChange={handleChange}/>
         <p>{formErrors.email}</p>
         <button>Registrarse</button>
