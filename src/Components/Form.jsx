@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from 'react';
 import  {useContextGlobal}  from '../Components/utils/global.context';
 import { useEffect } from "react";
+import swal from 'sweetalert';
 
 const Form = () => {
   const {formStyle} = useContextGlobal();
@@ -23,19 +24,23 @@ const Form = () => {
   useEffect(()=>{
     if(Object.keys(formErrors).length === 0 && submit){
       console.log(user)
+      swal({
+        icon: 'success',
+        title: 'Your registration has been successful',
+      })
     }
   },[formErrors])
 
   const validate = (user) => {
     const errors = {};
     if(!user.name){
-      errors.name = "Se requiere un nombre de usuario"
+      errors.name = "a name is required"
     }else if(!validName.test(user.name.trim())){
       errors.name = true;
     }
 
     if(!user.email){
-      errors.email = "Se requiere un email"
+      errors.email = "an email is required"
     }else if(!validEmail.test(user.email)){
       errors.email = true;
     }
@@ -57,10 +62,10 @@ const Form = () => {
         <label htmlFor="email-input">Email</label>
         <input type="text" name='email' id="email-input" onChange={handleChange}/>
         <p>{formErrors.email}</p>
-        <button>Registrarse</button>
+        <button>Submit</button>
       </form>
-      {(formErrors.name || formErrors.email) === true && <p>Por favor verifique los datos nuevamente</p>}
-      {Object.keys(formErrors).length === 0 && submit && <p>Gracias {user.name} te contactaremos cuanto antes via email</p>}
+      {(formErrors.name || formErrors.email) === true && <p>Please check your data again</p>}
+      {Object.keys(formErrors).length === 0 && submit && <p>Thank you {user.name} we will contact you as soon as possible via e-mail</p>}
     </div>
   );
 };

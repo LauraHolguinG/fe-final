@@ -1,6 +1,7 @@
 import React from "react";
 import  {useContextGlobal}  from '../Components/utils/global.context';
 import { Link } from "react-router-dom";
+import swal from 'sweetalert';
 
 const Card = ({dentista}) => {
   const {stylesSwitch,favs,setFavs} = useContextGlobal();
@@ -8,18 +9,20 @@ const Card = ({dentista}) => {
   const addFav = (dentistaFav)=>{
     if(!favs.includes(dentistaFav)){
       setFavs([...favs, dentistaFav]);
-      alert(`${dentista.name} fue agregado a favoritos`)
+      swal({title: `${dentista.name} added to favorites`,
+      icon: 'success'})
     }else{
-      alert(`${dentista.name} ya existe en tus favoritos`)
+      swal({title: `${dentista.name} already exists in your favorites`,icon: 'warning'})
     }
   }
   const deleteFav = (dentistFav, idFav) => {
     if(favs.includes(dentistFav)){
       let filter = favs.filter(item => item.id !== idFav);
       setFavs(filter)
-      alert(`${dentista.name} fue eliminado de favoritos`)
+      swal({title: `${dentista.name} has been delete from favorites`,
+      icon: 'success'})
     }else{
-      alert(`${dentista.name} no existe en tus favoritos`)
+      swal({title: `${dentista.name} can't be deleted as it doesn't exist in your favorites`,icon: 'warning'})
     }
   }
   return (
