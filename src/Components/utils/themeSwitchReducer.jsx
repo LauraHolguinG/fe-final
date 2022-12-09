@@ -8,7 +8,7 @@ export const themeSwitchReducer = (state, action) => {
             return {theme: themes.light, isDark: action.payload,  componentThemes: componentThemes.light}
 
         case 'THEME_DARK':
-            return {theme: themes.dark, isDark: true,componentThemes: componentThemes.dark, form: form.dark}
+            return {theme: themes.dark, isDark: action.payload ,componentThemes: componentThemes.dark, form: form.dark}
         default: {
             throw new Error()
         }
