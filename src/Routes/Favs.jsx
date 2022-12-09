@@ -9,7 +9,7 @@ const Favs = () => {
   useEffect(() => {
     const fav = JSON.parse(localStorage.getItem('favs'));
     if (fav) {
-     setDentistasFav(fav);
+      setDentistasFav(fav);
     }
   }, []);
   return (

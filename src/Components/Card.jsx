@@ -1,14 +1,9 @@
 import React from "react";
 import  {useContextGlobal}  from '../Components/utils/global.context';
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Card = ({ name, username, id, dentista}) => {
   const {stylesSwitch, favs, setFavs} = useContextGlobal();
-
-  useEffect(()=> {
-    localStorage.setItem('favs', JSON.stringify(favs))
-  },[favs]);
 
   const addFav = (dentistaFav)=>{
     if(!favs.includes(dentistaFav)){
