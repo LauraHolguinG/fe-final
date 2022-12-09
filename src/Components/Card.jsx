@@ -1,20 +1,32 @@
 import React from "react";
+import  {useContextGlobal}  from '../Components/utils/global.context';
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
+const Card = ({ name, username, id, dentista}) => {
+  const {stylesSwitch, favs, setFavs} = useContextGlobal();
 
-const Card = ({ name, username, id }) => {
+  useEffect(()=> {
+    localStorage.setItem('favs', JSON.stringify(favs))
+  },[favs]);
 
-  const addFav = ()=>{
-    // Aqui iria la logica para agregar la Card en el localStorage
+  const addFav = (dentistaFav)=>{
+    if(!favs.includes(dentistaFav)){
+      setFavs([...favs, dentistaFav]);
+      alert(`${dentista.name} fue agregado a favoritos`)
+    }else{
+      alert(`${dentista.name} ya existe en tus favoritos`)
+    }
   }
-
   return (
-    <div className="card">
-        {/* En cada card deberan mostrar en name - username y el id */}
-
-        {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}
-
-        {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
-        <button onClick={addFav} className="favButton">Add fav</button>
+    <div className="card" style={stylesSwitch}>
+      <Link to={'/dentist/' + id} className="cardBox" style={stylesSwitch}>
+        <img src="./images/doctor.jpg" alt="doctor"/>
+        <h3>{name}</h3>
+        <p>{username}</p>
+        <p>{id}</p>
+        </Link>
+        <button onClick={()=>addFav(dentista)} className="favButton">⭐</button>
     </div>
   );
 };
